@@ -2,13 +2,13 @@
 void input_two_string(char *a, char *b)
 {
    printf("enter the two strings\n");
-   fgets(a,20,stdin);
-   fgets(b,20,stdin);
+   scanf("%s",a);
+   scanf("%s",b);
 }
 int strcmp(char *a, char *b)
 {
   int x=0,y=0;
-  for(int i=0;a[i]!='\0'&& b[i]!='\0';i++)
+  for(int i=0;a[i]!='\0'|| b[i]!='\0';i++)
   {
     if(a[i]==b[i])
     {
@@ -20,6 +20,7 @@ int strcmp(char *a, char *b)
     else
       y++;
   }
+  printf("%d %d",x,y);
   if(x>y)
    return 1;
   else if(x==y)
