@@ -1,0 +1,112 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x884: file p5final.c, line 25.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5final.c:25
+25    printf("enter the number\n");
+(gdb) n
+enter the number
+26    float n=input();
+(gdb) s
+input () at p5final.c:3
+3   {
+(gdb) n
+5     scanf("%f",&a);
+(gdb) n
+5
+6     return a;
+(gdb) p a
+$1 = 5
+(gdb) n
+7   }
+(gdb) n
+main () at p5final.c:27
+27    output(n,my_sqrt(n));
+(gdb) p n
+$2 = 5
+(gdb) s
+my_sqrt (n=5) at p5final.c:10
+10    float x=0.5*(4+n/4);
+(gdb) n
+11    float a=x+1;
+(gdb) p x
+$3 = 2.625
+(gdb) n
+12    while(a-x>0.00001)
+(gdb) p a
+$4 = 3.625
+(gdb) n
+14      a=x;
+(gdb) n
+15      x=0.5*(x+n/x);
+(gdb) p a
+$5 = 2.625
+(gdb) n
+12    while(a-x>0.00001)
+(gdb) p x
+$6 = 2.2648809
+(gdb) n
+14      a=x;
+(gdb) n
+15      x=0.5*(x+n/x);
+(gdb) p a
+$7 = 2.2648809
+(gdb) n
+12    while(a-x>0.00001)
+(gdb) p x
+$8 = 2.23625135
+(gdb) n
+14      a=x;
+(gdb) n
+15      x=0.5*(x+n/x);
+(gdb) p a
+$9 = 2.23625135
+(gdb) n
+12    while(a-x>0.00001)
+(gdb) p x
+$10 = 2.23606801
+(gdb) n
+14      a=x;
+(gdb) n
+15      x=0.5*(x+n/x);
+(gdb) p a
+$11 = 2.23606801
+(gdb) n
+12    while(a-x>0.00001)
+(gdb) p x
+$12 = 2.23606801
+(gdb) n
+17    return x;
+(gdb) n
+18  }
+(gdb) s
+output (n=5, sqrt_result=2.23606801) at p5final.c:21
+21    printf("Square root of %f is %f",n,sqrt_result);
+(gdb) n
+22  }
+(gdb) n
+main () at p5final.c:28
+28  }
+(gdb) c
+Continuing.
+Square root of 5.000000 is 2.236068[Inferior 1 (process 186) exited normally]
+(gdb) q
+
