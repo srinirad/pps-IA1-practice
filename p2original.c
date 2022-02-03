@@ -8,16 +8,16 @@ int input()
 }
 int cmp(int a,int b,int c)
 {
-  if(a<=b)
+  if(a<b)
   {
-    if(b<=c)
+    if(b<c)
       return b;
     else
       return c;
   }
-  else if(b<=a)
+  else if(b<a)
   {
-    if(a>=c)
+    if(a>c)
       return a;
     else
       return c;

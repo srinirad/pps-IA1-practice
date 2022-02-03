@@ -15,7 +15,7 @@ void input_n_complex(int n, Complex c[n])
   Complex a;
   printf("enter the complex numbers in format a+bi\n");
   for(int i=0;i<n;i++)
-  scanf("%f %*c %f %*c",&c[i].real,&c[i].imaginary);
+  scanf("%f + %f i",&c[i].real,&c[i].imaginary);
 }
 Complex add(Complex a, Complex b)
 {
