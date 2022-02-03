@@ -8,7 +8,7 @@ Complex input_complex()
 {
   Complex a;
   printf("enter the complex numbers in format a+bi\n");
-  scanf("%0.2f %*c %0.2f %*c",&a.real,&a.imaginary);
+  scanf("%f %*c %f %*c",&a.real,&a.imaginary);
   return a;
 }
 Complex add(Complex a, Complex b)
@@ -20,7 +20,7 @@ Complex add(Complex a, Complex b)
 }
 void output(Complex a, Complex b, Complex c)
 {
-  printf("(%0.2f+%0.2fi)+(%0.2f+%0.2fi)=(%0.2f+%0.2fi)",a.real,b.imaginary,b.real,a.imaginary,c.real,c.imaginary);
+  printf("(%0.0f+%0.0fi)+(%0.0f+%0.0fi)=(%0.0f+%0.0fi)",a.real,b.imaginary,b.real,a.imaginary,c.real,c.imaginary);
 }
 int main()
 {

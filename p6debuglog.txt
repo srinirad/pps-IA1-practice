@@ -1,0 +1,130 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x92f: file p6final.c, line 41.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p6final.c:41
+41  {
+(gdb) n
+43    input_two_string(a,b);
+(gdb) s
+input_two_string (a=0x7fffe7638030 "\001", 
+    b=0x7fffe7638050 "\240\t਼U") at p6final.c:4
+4      printf("enter the two strings\n");
+(gdb) n
+enter the two strings
+5      scanf("%s",a);
+(gdb) n
+hi
+6      scanf("%s",b);
+(gdb) n
+good
+7   }
+(gdb) n
+main () at p6final.c:44
+44    output(a,b,strcmp(a,b));
+(gdb) s
+strcmp (a=0x7fffe7638030 "hi", b=0x7fffe7638050 "good") at p6final.c:10
+10    int z=0,w=0;
+(gdb) n
+11    for(int i=0;a[i]!='\0'|| b[i]!='\0';i++)
+(gdb) n
+13      if(a[i]==b[i])
+(gdb) p a[0]
+$1 = 104 'h'
+(gdb) p b[0]
+$2 = 103 'g'
+(gdb) n
+18      else if(a[i]>b[i])
+(gdb) n
+19        z++;
+(gdb) n
+11    for(int i=0;a[i]!='\0'|| b[i]!='\0';i++)
+(gdb) p z
+$3 = 1
+(gdb) n
+13      if(a[i]==b[i])
+(gdb) p a[1]
+$4 = 105 'i'
+(gdb) p b[1]
+$5 = 111 'o'
+(gdb) n
+18      else if(a[i]>b[i])
+(gdb) n
+21        w++;
+(gdb) n
+11    for(int i=0;a[i]!='\0'|| b[i]!='\0';i++)
+(gdb) p z
+$6 = 1
+(gdb) p w
+$7 = 1
+(gdb) n
+13      if(a[i]==b[i])
+(gdb) p a[2]
+$8 = 0 '\000'
+(gdb) p b[2]
+$9 = 111 'o'
+(gdb) n
+18      else if(a[i]>b[i])
+(gdb) n
+21        w++;
+(gdb) n
+11    for(int i=0;a[i]!='\0'|| b[i]!='\0';i++)
+(gdb) p z
+$10 = 1
+(gdb) p w
+$11 = 2
+(gdb) n
+13      if(a[i]==b[i])
+(gdb) p b[3]
+$12 = 0 'd'
+(gdb) n
+18      else if(a[i]>b[i])
+(gdb) n
+21        w++;
+(gdb) n
+11    for(int i=0;a[i]!='\0'|| b[i]!='\0';i++)
+(gdb) p z
+$13 = 1
+(gdb) p w
+$14 = 3
+(gdb) n
+23    if(z>w)
+(gdb) n
+25    else if(z==w)
+(gdb) n
+28     return -1;
+(gdb) n
+30  }
+(gdb) s
+output (a=0x7fffe7638030 "hi", b=0x7fffe7638050 "good", result=-1)
+    at p6final.c:33
+33    if(result<0)
+(gdb) n
+34      printf("%s is greater than %s",b,a);
+(gdb) n
+39  }
+(gdb) n
+main () at p6final.c:45
+45  }
+(gdb) c
+Continuing.
+good is greater than hi[Inferior 1 (process 334) exited normally]
+(gdb) q

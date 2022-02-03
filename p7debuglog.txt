@@ -1,0 +1,86 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x87c: file p7final.c, line 27.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p7final.c:27
+27    Complex a=input_complex();
+(gdb) s
+input_complex () at p7final.c:8
+8   {
+(gdb) n
+10    printf("enter the complex numbers in format a+bi\n");
+(gdb) n
+enter the complex numbers in format a+bi
+11    scanf("%f %*c %f %*c",&a.real,&a.imaginary);
+(gdb) n
+3+4i
+12    return a;
+(gdb) n
+13  }
+(gdb) n
+main () at p7final.c:28
+28    Complex b=input_complex();
+(gdb) p a
+$1 = {real = 3, imaginary = 4}
+(gdb) s
+input_complex () at p7final.c:8
+8   {
+(gdb) n
+10    printf("enter the complex numbers in format a+bi\n");
+(gdb) n
+enter the complex numbers in format a+bi
+11    scanf("%f %*c %f %*c",&a.real,&a.imaginary);
+(gdb) n
+5+2i
+12    return a;
+(gdb) n
+13  }
+(gdb) n
+main () at p7final.c:29
+29    Complex c=add(a,b);
+(gdb) p b
+$2 = {real = 5, imaginary = 2}
+(gdb) s
+add (a=..., b=...) at p7final.c:17
+17    c.real=a.real+b.real;
+(gdb) n
+18    c.imaginary=a.imaginary+b.imaginary;
+(gdb) n
+19    return c;
+(gdb) p c
+$3 = {real = 8, imaginary = 6}
+(gdb) n
+20  }
+(gdb) n
+main () at p7final.c:30
+30    output(a,b,c);
+(gdb) s
+output (a=..., b=..., c=...) at p7final.c:23
+23    printf("(%0.0f+%0.0fi)+(%0.0f+%0.0fi)=(%0.0f+%0.0fi)",a.real,b.imaginary,b.real,a.imaginary,c.real,c.imaginary);
+(gdb) n
+24  }
+(gdb) n
+main () at p7final.c:31
+31  }
+(gdb) c
+Continuing.
+(3+2i)+(5+4i)=(8+6i)[Inferior 1 (process 413) exited normally]
+(gdb) q

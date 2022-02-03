@@ -38,9 +38,9 @@ void output(int n, Complex c[n], Complex result)
 {
   for(int i=0;i<n-1;i++)
   {
-    printf("(%0.2f+%0.2fi)+",c[i].real,c[i].imaginary);
+    printf("(%0.0f+%0.0fi)+",c[i].real,c[i].imaginary);
   }
-  printf("(%0.2f+%0.2fi)=(%0.2f+%0.2fi)",c[n-1].real,c[n-1].imaginary,result.real,result.imaginary);
+  printf("(%0.0f+%0.0fi)=(%0.0f+%0.0fi)",c[n-1].real,c[n-1].imaginary,result.real,result.imaginary);
 }
 int main()
 {

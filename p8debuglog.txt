@@ -1,0 +1,141 @@
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x9cd: file p8final.c, line 46.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice-2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p8final.c:46
+46  {
+(gdb) n
+47    printf("enter the limit\n");
+(gdb) n
+enter the limit
+48    int n=get_n();
+(gdb) s
+get_n () at p8final.c:8
+8   {
+(gdb) n
+10    scanf("%d",&a);
+(gdb) n
+2
+11    return a;
+(gdb) n
+12  }
+(gdb) n
+main () at p8final.c:49
+49    Complex c[n];
+(gdb) p n
+$1 = 2
+(gdb) n
+50    input_n_complex(n,c);
+(gdb) s
+input_n_complex (n=2, c=0x7ffdfc892340) at p8final.c:16
+16    printf("enter the complex numbers in format a+bi\n");
+(gdb) n
+enter the complex numbers in format a+bi
+17    for(int i=0;i<n;i++)
+(gdb) n
+18    scanf("%f %*c %f %*c",&c[i].real,&c[i].imaginary);
+(gdb) n
+2+3i
+17    for(int i=0;i<n;i++)
+(gdb) n
+18    scanf("%f %*c %f %*c",&c[i].real,&c[i].imaginary);
+(gdb) n
+4+5i
+17    for(int i=0;i<n;i++)
+(gdb) n
+19  }
+(gdb) n
+main () at p8final.c:51
+51    Complex result=add_n_complex(n,c);
+(gdb) s
+add_n_complex (n=2, c=0x7ffdfc892340) at p8final.c:30
+30    sum.real=0;sum.imaginary=0;
+(gdb) n
+31    for(int i=0;i<n;i++)
+(gdb) n
+33      sum=add(c[i],sum);
+(gdb) p i
+$2 = 0
+(gdb) s
+add (a=..., b=...) at p8final.c:23
+23    c.real=a.real+b.real;
+(gdb) n
+24    c.imaginary=a.imaginary+b.imaginary;
+(gdb) n
+25    return c;
+(gdb) p c
+$3 = {real = 2, imaginary = 3}
+(gdb) n
+26  }
+(gdb) n
+add_n_complex (n=2, c=0x7ffdfc892340) at p8final.c:31
+31    for(int i=0;i<n;i++)
+(gdb) p sum
+$4 = {real = 2, imaginary = 3}
+(gdb) n
+33      sum=add(c[i],sum);
+(gdb) s
+add (a=..., b=...) at p8final.c:23
+23    c.real=a.real+b.real;
+(gdb) n
+24    c.imaginary=a.imaginary+b.imaginary;
+(gdb) n
+25    return c;
+(gdb) p c
+$5 = {real = 6, imaginary = 8}
+(gdb) n
+26  }
+(gdb) n
+add_n_complex (n=2, c=0x7ffdfc892340) at p8final.c:31
+31    for(int i=0;i<n;i++)
+(gdb) p sum
+$6 = {real = 6, imaginary = 8}
+(gdb) n
+35    return sum;
+(gdb) n
+36  }
+(gdb) n
+main () at p8final.c:52
+52    output(n,c,result);
+(gdb) p result
+$7 = {real = 6, imaginary = 8}
+(gdb) s
+output (n=2, c=0x7ffe578238b0, result=...) at p8final.c:39
+39    for(int i=0;i<n-1;i++)
+(gdb) n
+41      printf("(%0.0f+%0.0fi)+",c[i].real,c[i].imaginary);
+(gdb) n
+39    for(int i=0;i<n-1;i++)
+(gdb) p c[0]
+$8 = {real = 2, imaginary = 3}
+(gdb) n
+43    printf("(%0.0f+%0.0fi)=(%0.0f+%0.0fi)",c[n-1].real,c[n-1].imaginary,result.real,result.imaginary);
+(gdb) p c[1]
+$9 = {real = 4, imaginary = 5}
+(gdb) n
+44  }
+(gdb) n
+main () at p8final.c:53
+53  }
+(gdb) c
+Continuing.
+(2+3i)+(4+5i)=(6+8i)[Inferior 1 (process 497) exited normally]
+(gdb) q
